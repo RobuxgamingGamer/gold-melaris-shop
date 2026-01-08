@@ -1,29 +1,87 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Gold Melaris Shop — TEST MODE</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Gold Melaris Shop — TEST MODE</title>
 
-  <style>
-    body {
-      margin: 0;
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-      background: radial-gradient(circle at top, #fff7d6, #ffe08a, #ffd24d);
-      color: #222;
-      text-align: center;
-    }
+<style>
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  background: radial-gradient(circle at top, #fff7d6, #ffe08a, #ffd24d);
+  color: #222;
+  text-align: center;
+}
 
-    /* HEADER */
-    header {
-      background: linear-gradient(90deg, #ffcc00, #ffb300);
-      padding: 28px 16px;
-      font-weight: 900;
-      font-size: 2em;
-      letter-spacing: 1px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-    }
-    /* CEO PANEL */
+/* HEADER */
+header {
+  background: linear-gradient(90deg, #ffcc00, #ffb300);
+  padding: 28px 16px;
+  font-weight: 900;
+  font-size: 2em;
+  letter-spacing: 1px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+/* WARNING */
+.warning {
+  background: linear-gradient(135deg, #ff4d4d, #ff0000);
+  color: white;
+  margin: 26px;
+  padding: 22px;
+  border-radius: 22px;
+  font-weight: 900;
+  font-size: 1.2em;
+  box-shadow: 0 0 30px rgba(255,0,0,0.6);
+  animation: pulse 1.4s infinite;
+}
+
+/* CARDS */
+.card {
+  background: white;
+  margin: 26px;
+  padding: 32px;
+  border-radius: 28px;
+  box-shadow: 0 25px 55px rgba(0,0,0,0.25);
+  animation: floatIn 0.6s ease;
+}
+
+h2 {
+  margin-top: 0;
+  font-size: 1.8em;
+}
+
+/* SELECT */
+select {
+  padding: 16px;
+  font-size: 1.1em;
+  border-radius: 16px;
+  border: 2px solid #ddd;
+  width: 85%;
+}
+
+/* BUTTON */
+button {
+  margin-top: 20px;
+  padding: 18px 34px;
+  font-size: 1.2em;
+  font-weight: 900;
+  border-radius: 999px;
+  border: none;
+  background: linear-gradient(135deg, #ffcc00, #ff9900);
+  color: black;
+  box-shadow: 0 12px 30px rgba(255,165,0,0.7);
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+button:hover {
+  transform: scale(1.1);
+  box-shadow: 0 18px 40px rgba(255,165,0,0.95);
+}
+
+/* CEO PANEL */
 .ceo-panel {
   margin: 40px auto 20px;
   width: fit-content;
@@ -34,8 +92,9 @@
   border-radius: 14px;
   font-size: 0.85em;
   font-weight: 600;
-  box-shadow: inset 0 0 20px rgba(255,255,255,0.15),
-              0 8px 20px rgba(0,0,0,0.25);
+  box-shadow:
+    inset 0 0 20px rgba(255,255,255,0.15),
+    0 8px 20px rgba(0,0,0,0.25);
 }
 
 .ceo-panel a {
@@ -47,129 +106,79 @@
 .ceo-panel a:hover {
   text-decoration: underline;
 }
-    /* WARNING */
-    .warning {
-      background: linear-gradient(135deg, #ff4d4d, #ff0000);
-      color: white;
-      margin: 26px;
-      padding: 22px;
-      border-radius: 22px;
-      font-weight: 900;
-      font-size: 1.2em;
-      box-shadow: 0 0 30px rgba(255,0,0,0.6);
-      animation: pulse 1.4s infinite;
-    }
 
-    /* CARDS */
-    .card {
-      background: white;
-      margin: 26px;
-      padding: 32px;
-      border-radius: 28px;
-      box-shadow: 0 25px 55px rgba(0,0,0,0.25);
-      animation: floatIn 0.6s ease;
-    }
+/* FOOTER */
+footer {
+  margin: 30px 0;
+  font-size: 0.9em;
+  opacity: 0.7;
+}
 
-    h2 {
-      margin-top: 0;
-      font-size: 1.8em;
-    }
+/* ANIMATIONS */
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.04); }
+  100% { transform: scale(1); }
+}
 
-    /* SELECT */
-    select {
-      padding: 16px;
-      font-size: 1.1em;
-      border-radius: 16px;
-      border: 2px solid #ddd;
-      width: 85%;
-    }
-
-    /* BUTTON */
-    button {
-      margin-top: 20px;
-      padding: 18px 34px;
-      font-size: 1.2em;
-      font-weight: 900;
-      border-radius: 999px;
-      border: none;
-      background: linear-gradient(135deg, #ffcc00, #ff9900);
-      color: black;
-      box-shadow: 0 12px 30px rgba(255,165,0,0.7);
-      cursor: pointer;
-      transition: transform 0.2s, box-shadow 0.2s;
-    }
-
-    button:hover {
-      transform: scale(1.1);
-      box-shadow: 0 18px 40px rgba(255,165,0,0.95);
-    }
-
-    /* FOOTER */
-    footer {
-      margin: 36px 0;
-      font-size: 1em;
-      opacity: 0.75;
-    }
-
-    /* ANIMATIONS */
-    @keyframes pulse {
-      0% { transform: scale(1); }
-      50% { transform: scale(1.04); }
-      100% { transform: scale(1); }
-    }
-
-    @keyframes floatIn {
-      from {
-        opacity: 0;
-        transform: translateY(40px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-  </style>
+@keyframes floatIn {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+</style>
 </head>
 
 <body>
 
-  <header>
-    🟡 Gold Melaris Shop — TEST MODE
-    <div class="ceo">CEO: Mitko (YouTube: Robux_gaming_gamer)</div>
-  </header>
+<header>
+  🟡 Gold Melaris Shop — TEST MODE
+</header>
 
-  <div class="warning">
-    ⚠️ PRIVATE TEST SITE<br>
-    Nothing here is for sale.<br>
-    Do <strong>NOT</strong> buy or order anything.
-  </div>
+<div class="warning">
+  ⚠️ PRIVATE TEST SITE<br>
+  Nothing here is for sale.<br>
+  <strong>Do NOT buy or order anything.</strong>
+</div>
 
-  <div class="card">
-    <h2> 🥣Scoop Size</h2>
-    <select>
-      <option selected disabled>Select scoop size</option>
-      <option>Small</option>
-      <option>Medium</option>
-      <option>Large</option>
-    </select>
-  </div>
+<div class="card">
+  <h2>🥣 Scoop Size</h2>
+  <select>
+    <option selected disabled>Select scoop size</option>
+    <option>Small</option>
+    <option>Medium</option>
+    <option>Large</option>
+  </select>
+</div>
 
-  <div class="card">
-    <h2> 📿Bead Scooped (IRL)</h2>
-    <select>
-      <option selected disabled>Select bead rarity</option>
-      <option>Common</option>
-      <option>Rare</option>
-      <option>Epic</option>
-      <option>Legendary</option>
-    </select>
-    <br>
-    <button>Confirm Pack</button>
-  </div>
+<div class="card">
+  <h2>🧿 Bead Scooped (IRL)</h2>
+  <select>
+    <option selected disabled>Select bead rarity</option>
+    <option>Common</option>
+    <option>Rare</option>
+    <option>Epic</option>
+    <option>Legendary</option>
+  </select>
+  <br><br>
+  <button>Confirm Pack</button>
+</div>
 
-  <footer>
-    © 2026 Gold Melaris — Test Environment
-  </footer>
+<div class="ceo-panel">
+  👑 CEO: Mitko —
+  <a href="https://youtube.com/@robux_gaming_gamer?si=7Y2JiltJASEWxH6R" target="_blank" rel="noopener">
+    YouTube: Robux_gaming_gamer
+  </a>
+</div>
+
+<footer>
+  © 2026 Gold Melaris — Test Environment
+</footer>
 
 </body>
 </html>
