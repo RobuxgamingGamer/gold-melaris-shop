@@ -1,0 +1,130 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Orbitron", system-ui, sans-serif;
+  background: radial-gradient(circle at top, #0a0f2c, #020314);
+  color: white;
+  text-align: center;
+  overflow-x: hidden;
+}
+
+/* HEADER */
+header {
+  padding: 30px;
+  background: linear-gradient(135deg, #ff00ff, #00ffff);
+  box-shadow: 0 0 40px cyan;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 2.5em;
+  text-shadow: 0 0 25px magenta;
+}
+
+.subtitle {
+  opacity: 0.8;
+}
+
+/* WARNING */
+.warning {
+  margin: 20px;
+  padding: 20px;
+  border-radius: 20px;
+  background: linear-gradient(135deg, red, orange);
+  font-weight: 900;
+  box-shadow: 0 0 30px red;
+}
+
+/* CARD */
+.card {
+  margin: 30px;
+  padding: 30px;
+  border-radius: 25px;
+  background: linear-gradient(180deg, #11163a, #060822);
+  box-shadow: 0 25px 60px rgba(0,0,0,0.8);
+}
+
+/* SELECT */
+select {
+  width: 100%;
+  padding: 14px;
+  border-radius: 14px;
+  background: #05061a;
+  color: cyan;
+  border: 2px solid cyan;
+  font-size: 1.1em;
+  box-shadow: 0 0 15px cyan;
+}
+
+/* PRICE */
+.price {
+  margin-top: 15px;
+  font-size: 1.8em;
+  font-weight: 900;
+  color: gold;
+  text-shadow: 0 0 20px gold;
+}
+
+/* GIFTS */
+.gifts {
+  margin-top: 10px;
+  color: magenta;
+  font-weight: 700;
+}
+
+/* BUTTON */
+button {
+  margin-top: 25px;
+  width: 100%;
+  padding: 18px;
+  border-radius: 999px;
+  border: none;
+  font-size: 1.3em;
+  font-weight: 900;
+  background: linear-gradient(135deg, cyan, magenta);
+  box-shadow: 0 0 30px cyan;
+}
+
+button:active {
+  transform: scale(0.92);
+}
+
+/* SHAKE */
+.shake-small { animation: shake 0.3s; }
+.shake-medium { animation: shake 0.5s; }
+.shake-big { animation: shake 0.8s; }
+
+@keyframes shake {
+  0% { transform: translate(0,0); }
+  25% { transform: translate(-10px,6px); }
+  50% { transform: translate(10px,-6px); }
+  75% { transform: translate(-14px,10px); }
+  100% { transform: translate(0,0); }
+}
+
+/* BEADS */
+.bead {
+  position: fixed;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  animation: fly 1.2s forwards;
+}
+
+@keyframes fly {
+  from { transform: translateY(0); opacity: 1; }
+  to { transform: translateY(500px); opacity: 0; }
+}
+
+/* CEO */
+.ceo-panel {
+  margin: 40px auto;
+  padding: 12px 20px;
+  width: fit-content;
+  border-radius: 14px;
+  background: linear-gradient(135deg, #0044ff, #00ffff);
+  box-shadow: 0 0 25px cyan;
+}
