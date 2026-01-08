@@ -3,199 +3,167 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Gold Melaris Shop — TEST MODE</title>
+<title>Gold Melaris — Test Mode</title>
 
 <style>
-/* =========================
-   GOLD TEXTURED BACKGROUND
-========================= */
+/* ================= GLOBAL ================= */
+* { box-sizing: border-box; }
+
 body {
   margin: 0;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
   background:
-    radial-gradient(circle at 20% 20%, rgba(255,255,255,0.35), transparent 40%),
-    radial-gradient(circle at 80% 30%, rgba(255,255,255,0.25), transparent 45%),
-    linear-gradient(135deg, #ffcc33, #ffb300, #ffd24d);
-  background-size: 200% 200%;
-  animation: goldMove 12s infinite linear;
-  color: #222;
+    radial-gradient(circle at 20% 10%, #fff1a8, transparent 40%),
+    radial-gradient(circle at 80% 30%, #ffd700, transparent 45%),
+    linear-gradient(180deg, #ffcc00, #ff9f00, #ffcc00);
+  min-height: 100vh;
   text-align: center;
   overflow-x: hidden;
 }
 
-@keyframes goldMove {
-  0% { background-position: 0% 0%; }
-  100% { background-position: 200% 200%; }
-}
-
-/* =========================
-   SCREEN SHAKE
-========================= */
-.shake-rare {
-  animation: shake 0.4s ease;
-}
-
-.shake-epic {
-  animation: shake 0.7s ease;
-}
-
-.shake-legendary {
-  animation: shakeHard 1s ease;
-}
-
-@keyframes shake {
-  0% { transform: translate(0); }
-  20% { transform: translate(-6px, 4px); }
-  40% { transform: translate(6px, -4px); }
-  60% { transform: translate(-4px, 6px); }
-  80% { transform: translate(4px, -6px); }
-  100% { transform: translate(0); }
-}
-
-@keyframes shakeHard {
-  0% { transform: translate(0); }
-  10% { transform: translate(-12px, 8px); }
-  30% { transform: translate(12px, -8px); }
-  50% { transform: translate(-10px, 10px); }
-  70% { transform: translate(10px, -10px); }
-  90% { transform: translate(-8px, 8px); }
-  100% { transform: translate(0); }
-}
-
-/* =========================
-   GOLD FLASH
-========================= */
-.flash {
-  position: fixed;
-  inset: 0;
-  background: radial-gradient(circle, rgba(255,215,0,0.9), rgba(255,215,0,0.3), transparent 70%);
-  pointer-events: none;
-  animation: flashFade 0.6s ease forwards;
-  z-index: 999;
-}
-
-@keyframes flashFade {
-  from { opacity: 1; }
-  to { opacity: 0; }
-}
-
-/* =========================
-   HEADER
-========================= */
+/* ================= HEADER ================= */
 header {
-  padding: 26px 16px;
-  font-size: 2em;
+  padding: 28px 16px;
+  font-size: 2.2em;
   font-weight: 900;
-  background: linear-gradient(90deg, #ffcc00, #ff9900);
-  box-shadow: 0 10px 30px rgba(0,0,0,0.35);
+  letter-spacing: 1px;
+  color: #1a1a1a;
+  background: linear-gradient(90deg, #ffcc00, #ffb300);
+  box-shadow: 0 12px 35px rgba(0,0,0,0.35);
 }
 
-/* =========================
-   WARNING
-========================= */
+/* ================= WARNING ================= */
 .warning {
   margin: 24px;
-  padding: 20px;
-  border-radius: 20px;
+  padding: 22px;
+  border-radius: 22px;
   background: linear-gradient(135deg, #ff3b3b, #ff0000);
   color: white;
   font-weight: 900;
-  font-size: 1.1em;
-  box-shadow: 0 0 30px rgba(255,0,0,0.6);
+  font-size: 1.15em;
+  box-shadow: 0 0 35px rgba(255,0,0,0.7);
+  animation: pulse 1.4s infinite;
 }
 
-/* =========================
-   CARDS
-========================= */
+/* ================= CARDS ================= */
 .card {
-  background: white;
+  background: linear-gradient(180deg, #ffffff, #fff9e6);
   margin: 26px;
   padding: 30px;
   border-radius: 26px;
-  box-shadow: 0 25px 50px rgba(0,0,0,0.25);
+  box-shadow: 0 30px 60px rgba(0,0,0,0.25);
 }
 
-h2 {
-  margin-top: 0;
-  font-size: 1.7em;
-}
-
-/* =========================
-   INPUTS
-========================= */
+/* ================= SELECT ================= */
 select {
   padding: 16px;
   width: 85%;
   font-size: 1.1em;
-  border-radius: 14px;
+  border-radius: 16px;
   border: 2px solid #ddd;
 }
 
-/* =========================
-   BUTTON
-========================= */
+/* ================= PRICE ================= */
+#price {
+  margin-top: 16px;
+  font-size: 1.6em;
+  font-weight: 900;
+  color: #ff9900;
+  text-shadow: 0 0 12px rgba(255,165,0,0.7);
+}
+
+/* ================= BUTTON ================= */
 button {
   margin-top: 22px;
   padding: 18px 36px;
-  font-size: 1.2em;
+  font-size: 1.25em;
   font-weight: 900;
   border-radius: 999px;
   border: none;
   cursor: pointer;
   background: linear-gradient(135deg, #ffcc00, #ff9900);
-  box-shadow: 0 12px 30px rgba(255,165,0,0.7);
+  box-shadow: 0 14px 35px rgba(255,165,0,0.7);
+  transition: transform .2s;
 }
 
-/* =========================
-   BEADS
-========================= */
+button:active { transform: scale(0.95); }
+
+/* ================= BEADS ================= */
 .bead {
   position: fixed;
-  width: 14px;
-  height: 14px;
+  width: 22px;
+  height: 22px;
   border-radius: 50%;
-  background: radial-gradient(circle at 30% 30%, #fff, #ff66cc, #aa00ff);
   pointer-events: none;
+  animation: fly 1.2s ease-out forwards;
 }
 
-/* =========================
-   CEO PANEL
-========================= */
-.ceo-panel {
-  margin: 40px auto 20px;
-  padding: 14px 22px;
+.red { background: radial-gradient(circle, #ff6b6b, #b00000); }
+.blue { background: radial-gradient(circle, #6bc9ff, #004d99); }
+.green { background: radial-gradient(circle, #6bff95, #007a3d); }
+.purple { background: radial-gradient(circle, #d46bff, #4b0082); }
+.gold { background: radial-gradient(circle, #fff3a0, #ffb300); }
+
+/* ================= CEO PANEL ================= */
+footer {
+  margin: 40px auto;
   width: fit-content;
+  padding: 14px 22px;
   background: linear-gradient(135deg, #2f80ed, #56ccf2);
+  border-radius: 14px;
   color: white;
-  border-radius: 16px;
   font-size: 0.9em;
-  box-shadow: inset 0 0 20px rgba(255,255,255,0.3),
-              0 8px 20px rgba(0,0,0,0.25);
+  font-weight: 700;
+  box-shadow: inset 0 0 20px rgba(255,255,255,0.25),
+              0 10px 25px rgba(0,0,0,0.3);
 }
 
-.ceo-panel a {
-  color: #dbeafe;
-  font-weight: 800;
+footer a {
+  color: #dff6ff;
   text-decoration: none;
 }
 
-/* =========================
-   FOOTER
-========================= */
-footer {
-  margin: 30px 0;
-  opacity: 0.7;
-  font-size: 0.9em;
+/* ================= ANIMATIONS ================= */
+@keyframes fly {
+  to {
+    transform: translate(var(--x), var(--y)) rotate(720deg);
+    opacity: 0;
+  }
+}
+
+@keyframes pulse {
+  50% { transform: scale(1.05); }
+}
+
+.shake-small { animation: shake .3s; }
+.shake-mid { animation: shake .6s; }
+.shake-big { animation: shake 1s; }
+
+@keyframes shake {
+  0% { transform: translate(0); }
+  25% { transform: translate(-6px); }
+  50% { transform: translate(6px); }
+  75% { transform: translate(-6px); }
+  100% { transform: translate(0); }
+}
+
+.flash {
+  animation: flash .5s;
+}
+
+@keyframes flash {
+  from { background-color: #fff3a0; }
+  to { background-color: transparent; }
 }
 </style>
 </head>
 
-<body id="screen">
+<body>
 
 <header>🟡 Gold Melaris Shop — TEST MODE</header>
 
 <div class="warning">
-⚠️ PRIVATE TEST SITE<br>
+⚠ PRIVATE TEST SITE<br>
 Nothing here is for sale.<br>
 DO NOT buy or order anything.
 </div>
@@ -203,81 +171,83 @@ DO NOT buy or order anything.
 <div class="card">
 <h2>🥣 Scoop Size</h2>
 <select id="size">
-  <option disabled selected>Select scoop size</option>
-  <option>Small</option>
-  <option>Medium</option>
-  <option>Large</option>
+<option disabled selected>Select size</option>
+<option>Small</option>
+<option>Medium</option>
+<option>Large</option>
 </select>
 </div>
 
 <div class="card">
-<h2>💎 Bead Scooped (IRL)</h2>
+<h2>🧿 Bead Scooped (IRL)</h2>
 <select id="rarity">
-  <option disabled selected>Select bead rarity</option>
-  <option>Common</option>
-  <option>Rare</option>
-  <option>Epic</option>
-  <option>Legendary</option>
+<option disabled selected>Select rarity</option>
+<option>Common</option>
+<option>Rare</option>
+<option>Epic</option>
+<option>Legendary</option>
 </select>
-<br>
-<button onclick="openPack()">Confirm Pack</button>
+
+<div id="price">Select options</div>
+<button onclick="buy()">Confirm Pack</button>
 </div>
 
-<div class="ceo-panel">
+<footer>
 CEO: Mitko —
 <a href="https://youtube.com/@robux_gaming_gamer" target="_blank">
 Robux_gaming_gamer
 </a>
-</div>
+</footer>
 
-<footer>© 2026 Gold Melaris — Test Environment</footer>
-
-<audio id="popSound" src="https://assets.mixkit.co/sfx/preview/mixkit-arcade-game-jump-coin-216.wav"></audio>
+<audio id="pop" src="https://assets.mixkit.co/sfx/preview/mixkit-game-ball-tap-2073.mp3"></audio>
+<audio id="boom" src="https://assets.mixkit.co/sfx/preview/mixkit-arcade-explosion-2759.mp3"></audio>
 
 <script>
-function openPack() {
-  const rarity = document.getElementById("rarity").value;
-  const screen = document.getElementById("screen");
+const prices = {
+ Small:{Common:5,Rare:12,Epic:20,Legendary:50},
+ Medium:{Common:10,Rare:22,Epic:40,Legendary:65},
+ Large:{Common:20,Rare:30,Epic:55,Legendary:80}
+};
 
-  document.getElementById("popSound").play();
+const size = document.getElementById("size");
+const rarity = document.getElementById("rarity");
+const price = document.getElementById("price");
 
-  // REMOVE OLD SHAKES
-  screen.className = "";
+size.onchange = rarity.onchange = () => {
+ if(prices[size.value]?.[rarity.value])
+  price.textContent = "💰 €" + prices[size.value][rarity.value];
+};
 
-  if (rarity === "Rare") screen.classList.add("shake-rare");
-  if (rarity === "Epic") screen.classList.add("shake-epic");
-  if (rarity === "Legendary") screen.classList.add("shake-legendary");
+function beadExplosion(level){
+ const colors = ["red","blue","green","purple","gold"];
+ const count = level==="Legendary"?40:level==="Epic"?25:12;
+ for(let i=0;i<count;i++){
+  const b=document.createElement("div");
+  b.className="bead "+colors[Math.floor(Math.random()*colors.length)];
+  b.style.left=Math.random()*100+"vw";
+  b.style.top="50vh";
+  b.style.setProperty("--x",(Math.random()*400-200)+"px");
+  b.style.setProperty("--y",(Math.random()*-500)+"px");
+  document.body.appendChild(b);
+  setTimeout(()=>b.remove(),1200);
+ }
+}
 
-  // GOLD FLASH
-  const flash = document.createElement("div");
-  flash.className = "flash";
-  document.body.appendChild(flash);
-  setTimeout(() => flash.remove(), 600);
+function buy(){
+ if(!prices[size.value]?.[rarity.value]) return;
 
-  // BEADS
-  const count = rarity === "Legendary" ? 50 : rarity === "Epic" ? 35 : 25;
+ document.getElementById("pop").play();
 
-  for (let i = 0; i < count; i++) {
-    const bead = document.createElement("div");
-    bead.className = "bead";
-    bead.style.left = Math.random() * window.innerWidth + "px";
-    bead.style.top = window.innerHeight + "px";
-    document.body.appendChild(bead);
+ if(rarity.value==="Rare") document.body.classList.add("shake-small");
+ if(rarity.value==="Epic") document.body.classList.add("shake-mid");
+ if(rarity.value==="Legendary"){
+  document.body.classList.add("shake-big","flash");
+  document.getElementById("boom").play();
+ }
 
-    const x = (Math.random() - 0.5) * 700;
-    const y = Math.random() * -700 - 200;
+ beadExplosion(rarity.value);
 
-    bead.animate([
-      { transform: "translate(0,0)", opacity: 1 },
-      { transform: `translate(${x}px, ${y}px)`, opacity: 1 },
-      { transform: `translate(${x}px, ${y + 900}px)`, opacity: 0 }
-    ], {
-      duration: 1800,
-      easing: "cubic-bezier(.2,.8,.2,1)"
-    });
-
-    setTimeout(() => bead.remove(), 1800);
-  }
+ setTimeout(()=>document.body.className="",1200);
 }
 </script>
 
