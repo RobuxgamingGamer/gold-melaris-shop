@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Gold Melaris Shop — Test Mode</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background: #0f0f0f;
+      color: white;
+      text-align: center;
+    }
+
+    header {
+      background: gold;
+      color: black;
+      padding: 20px;
+      font-weight: bold;
+    }
+
+    .warning {
+      background: #ff4444;
+      padding: 12px;
+      margin: 15px;
+      border-radius: 8px;
+      font-weight: bold;
+    }
+
+    .card {
+      background: #1c1c1c;
+      margin: 20px;
+      padding: 20px;
+      border-radius: 12px;
+    }
+
+    select, button {
+      padding: 12px;
+      margin-top: 10px;
+      font-size: 16px;
+      border-radius: 8px;
+      border: none;
+    }
+
+    button {
+      background: gold;
+      color: black;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .result {
+      margin-top: 20px;
+      font-size: 18px;
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  🟡 Gold Melaris Shop — TEST MODE
+</header>
+
+<div class="warning">
+  ⚠️ PRIVATE TEST SITE<br>
+  Nothing here is for sale.<br>
+  Do NOT buy or order anything.
+</div>
+
+<div class="card">
+  <h2>🍨 Scoop Size</h2>
+  <select id="scoop">
+    <option disabled selected>Select scoop size</option>
+    <option>Small</option>
+    <option>Medium</option>
+    <option>Large</option>
+  </select>
+</div>
+
+<div class="card">
+  <h2>🧔 Beard Scooped (IRL)</h2>
+  <select id="beard">
+    <option disabled selected>Select beard rarity</option>
+    <option>Common</option>
+    <option>Rare</option>
+    <option>Epic</option>
+    <option>Legendary</option>
+  </select>
+
+  <br>
+  <button onclick="confirmPack()">Confirm Pack</button>
+
+  <div class="result" id="result"></div>
+</div>
+
+<script>
+  function confirmPack() {
+    const scoop = document.getElementById("scoop").value;
+    const beard = document.getElementById("beard").value;
+
+    if (!scoop || !beard) {
+      alert("Select scoop size and beard first.");
+      return;
+    }
+
+    let reward = "Basic item";
+    if (beard === "Rare") reward = "Good item";
+    if (beard === "Epic") reward = "Very good item";
+    if (beard === "Legendary") reward = "Premium item";
+
+    document.getElementById("result").innerText =
+      "✅ " + scoop + " scoop packed.\nBeard: " + beard + "\nReward: " + reward;
+  }
+</script>
+
+</body>
+</html>
