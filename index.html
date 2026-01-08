@@ -1,178 +1,283 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Gold Melaris Shop — Test Mode</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gold Melaris Shop — TEST MODE</title>
 
 <style>
+/* =========================
+   GOLD TEXTURED BACKGROUND
+========================= */
 body {
   margin: 0;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-  background: radial-gradient(circle at top, #fff7d6, #ffe08a, #ffd24d);
+  background:
+    radial-gradient(circle at 20% 20%, rgba(255,255,255,0.35), transparent 40%),
+    radial-gradient(circle at 80% 30%, rgba(255,255,255,0.25), transparent 45%),
+    linear-gradient(135deg, #ffcc33, #ffb300, #ffd24d);
+  background-size: 200% 200%;
+  animation: goldMove 12s infinite linear;
   color: #222;
   text-align: center;
+  overflow-x: hidden;
 }
 
-/* HEADER */
+@keyframes goldMove {
+  0% { background-position: 0% 0%; }
+  100% { background-position: 200% 200%; }
+}
+
+/* =========================
+   SCREEN SHAKE
+========================= */
+.shake-rare {
+  animation: shake 0.4s ease;
+}
+
+.shake-epic {
+  animation: shake 0.7s ease;
+}
+
+.shake-legendary {
+  animation: shakeHard 1s ease;
+}
+
+@keyframes shake {
+  0% { transform: translate(0); }
+  20% { transform: translate(-6px, 4px); }
+  40% { transform: translate(6px, -4px); }
+  60% { transform: translate(-4px, 6px); }
+  80% { transform: translate(4px, -6px); }
+  100% { transform: translate(0); }
+}
+
+@keyframes shakeHard {
+  0% { transform: translate(0); }
+  10% { transform: translate(-12px, 8px); }
+  30% { transform: translate(12px, -8px); }
+  50% { transform: translate(-10px, 10px); }
+  70% { transform: translate(10px, -10px); }
+  90% { transform: translate(-8px, 8px); }
+  100% { transform: translate(0); }
+}
+
+/* =========================
+   GOLD FLASH
+========================= */
+.flash {
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(circle, rgba(255,215,0,0.9), rgba(255,215,0,0.3), transparent 70%);
+  pointer-events: none;
+  animation: flashFade 0.6s ease forwards;
+  z-index: 999;
+}
+
+@keyframes flashFade {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+/* =========================
+   HEADER
+========================= */
 header {
-  background: linear-gradient(90deg, #ffcc00, #ffb300);
-  padding: 28px 16px;
+  padding: 26px 16px;
+  font-size: 2em;
   font-weight: 900;
-  font-size: 1.9em;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+  background: linear-gradient(90deg, #ffcc00, #ff9900);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.35);
 }
 
-/* WARNING */
+/* =========================
+   WARNING
+========================= */
 .warning {
-  background: linear-gradient(135deg, #ff4d4d, #ff0000);
-  color: white;
   margin: 24px;
-  padding: 22px;
-  border-radius: 22px;
+  padding: 20px;
+  border-radius: 20px;
+  background: linear-gradient(135deg, #ff3b3b, #ff0000);
+  color: white;
   font-weight: 900;
-  font-size: 1.2em;
+  font-size: 1.1em;
   box-shadow: 0 0 30px rgba(255,0,0,0.6);
 }
 
-/* CARD */
+/* =========================
+   CARDS
+========================= */
 .card {
   background: white;
   margin: 26px;
   padding: 30px;
   border-radius: 26px;
-  box-shadow: 0 25px 55px rgba(0,0,0,0.25);
+  box-shadow: 0 25px 50px rgba(0,0,0,0.25);
 }
 
 h2 {
   margin-top: 0;
+  font-size: 1.7em;
 }
 
+/* =========================
+   INPUTS
+========================= */
 select {
   padding: 16px;
-  font-size: 1.1em;
-  border-radius: 16px;
-  border: 2px solid #ddd;
   width: 85%;
-  margin-bottom: 14px;
+  font-size: 1.1em;
+  border-radius: 14px;
+  border: 2px solid #ddd;
 }
 
+/* =========================
+   BUTTON
+========================= */
 button {
-  margin-top: 20px;
+  margin-top: 22px;
   padding: 18px 36px;
   font-size: 1.2em;
   font-weight: 900;
   border-radius: 999px;
   border: none;
+  cursor: pointer;
   background: linear-gradient(135deg, #ffcc00, #ff9900);
   box-shadow: 0 12px 30px rgba(255,165,0,0.7);
-  cursor: pointer;
 }
 
-/* RESULT */
-.result {
-  margin-top: 18px;
-  font-size: 1.2em;
-  font-weight: 800;
+/* =========================
+   BEADS
+========================= */
+.bead {
+  position: fixed;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%, #fff, #ff66cc, #aa00ff);
+  pointer-events: none;
 }
 
-/* CEO PANEL */
+/* =========================
+   CEO PANEL
+========================= */
 .ceo-panel {
-  margin: 40px auto 30px;
+  margin: 40px auto 20px;
   padding: 14px 22px;
   width: fit-content;
-  background: linear-gradient(135deg, #2b6cff, #4aa3ff);
+  background: linear-gradient(135deg, #2f80ed, #56ccf2);
   color: white;
-  border-radius: 14px;
+  border-radius: 16px;
   font-size: 0.9em;
-  font-weight: 600;
-  box-shadow:
-    inset 0 0 20px rgba(255,255,255,0.35),
-    0 10px 25px rgba(0,0,0,0.25);
+  box-shadow: inset 0 0 20px rgba(255,255,255,0.3),
+              0 8px 20px rgba(0,0,0,0.25);
 }
 
 .ceo-panel a {
-  color: #e6f2ff;
-  text-decoration: none;
+  color: #dbeafe;
   font-weight: 800;
+  text-decoration: none;
 }
 
+/* =========================
+   FOOTER
+========================= */
 footer {
-  margin: 24px 0;
-  font-size: 0.85em;
+  margin: 30px 0;
   opacity: 0.7;
+  font-size: 0.9em;
 }
 </style>
 </head>
 
-<body>
+<body id="screen">
 
 <header>🟡 Gold Melaris Shop — TEST MODE</header>
 
 <div class="warning">
 ⚠️ PRIVATE TEST SITE<br>
 Nothing here is for sale.<br>
-<strong>Do NOT buy or order anything.</strong>
+DO NOT buy or order anything.
 </div>
 
 <div class="card">
 <h2>🥣 Scoop Size</h2>
 <select id="size">
   <option disabled selected>Select scoop size</option>
-  <option value="small">Small</option>
-  <option value="medium">Medium</option>
-  <option value="large">Large</option>
+  <option>Small</option>
+  <option>Medium</option>
+  <option>Large</option>
 </select>
+</div>
 
-<h2>🧿 Bead Rarity</h2>
+<div class="card">
+<h2>💎 Bead Scooped (IRL)</h2>
 <select id="rarity">
-  <option disabled selected>Select rarity</option>
-  <option value="common">Common</option>
-  <option value="rare">Rare</option>
-  <option value="epic">Epic</option>
-  <option value="legendary">Legendary</option>
+  <option disabled selected>Select bead rarity</option>
+  <option>Common</option>
+  <option>Rare</option>
+  <option>Epic</option>
+  <option>Legendary</option>
 </select>
-
-<button onclick="calculate()">Confirm Pack</button>
-
-<div class="result" id="result"></div>
+<br>
+<button onclick="openPack()">Confirm Pack</button>
 </div>
 
 <div class="ceo-panel">
 CEO: Mitko —
-<a href="https://youtube.com/@robux_gaming_gamer?si=7Y2JiltJASEWxH6R" target="_blank">
-Robux_gaming_gamer (YouTube)
+<a href="https://youtube.com/@robux_gaming_gamer" target="_blank">
+Robux_gaming_gamer
 </a>
 </div>
 
 <footer>© 2026 Gold Melaris — Test Environment</footer>
 
+<audio id="popSound" src="https://assets.mixkit.co/sfx/preview/mixkit-arcade-game-jump-coin-216.wav"></audio>
+
 <script>
-const prices = {
-  common: { small: 5, medium: 10, large: 20 },
-  rare: { small: 12, medium: 22, large: 30 },
-  epic: { small: 20, medium: 40, large: 55 },
-  legendary: { small: 50, medium: 65, large: 80 }
-};
-
-function calculate() {
-  const size = document.getElementById("size").value;
+function openPack() {
   const rarity = document.getElementById("rarity").value;
-  const result = document.getElementById("result");
+  const screen = document.getElementById("screen");
 
-  if (!size || !rarity) {
-    result.textContent = "❌ Please select size and rarity.";
-    return;
+  document.getElementById("popSound").play();
+
+  // REMOVE OLD SHAKES
+  screen.className = "";
+
+  if (rarity === "Rare") screen.classList.add("shake-rare");
+  if (rarity === "Epic") screen.classList.add("shake-epic");
+  if (rarity === "Legendary") screen.classList.add("shake-legendary");
+
+  // GOLD FLASH
+  const flash = document.createElement("div");
+  flash.className = "flash";
+  document.body.appendChild(flash);
+  setTimeout(() => flash.remove(), 600);
+
+  // BEADS
+  const count = rarity === "Legendary" ? 50 : rarity === "Epic" ? 35 : 25;
+
+  for (let i = 0; i < count; i++) {
+    const bead = document.createElement("div");
+    bead.className = "bead";
+    bead.style.left = Math.random() * window.innerWidth + "px";
+    bead.style.top = window.innerHeight + "px";
+    document.body.appendChild(bead);
+
+    const x = (Math.random() - 0.5) * 700;
+    const y = Math.random() * -700 - 200;
+
+    bead.animate([
+      { transform: "translate(0,0)", opacity: 1 },
+      { transform: `translate(${x}px, ${y}px)`, opacity: 1 },
+      { transform: `translate(${x}px, ${y + 900}px)`, opacity: 0 }
+    ], {
+      duration: 1800,
+      easing: "cubic-bezier(.2,.8,.2,1)"
+    });
+
+    setTimeout(() => bead.remove(), 1800);
   }
-
-  const price = prices[rarity][size];
-  let gifts = "";
-
-  if (rarity === "legendary") {
-    gifts = " 🎁 Includes 3 gifts!";
-  }
-
-  result.textContent = `💰 Price: €${price}${gifts}`;
 }
 </script>
 
