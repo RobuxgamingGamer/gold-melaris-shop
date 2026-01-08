@@ -1,17 +1,17 @@
-// ===== PRICES =====
 const prices = {
   small:   { common: 5,  rare: 12, epic: 20, legendary: 50 },
   middle:  { common: 10, rare: 22, epic: 40, legendary: 65 },
   large:   { common: 20, rare: 30, epic: 55, legendary: 80 }
 };
 
-// ===== ELEMENTS =====
 const sizeEl   = document.getElementById("size");
 const rarityEl = document.getElementById("rarity");
 const priceEl  = document.getElementById("price");
 const giftsEl  = document.getElementById("gifts");
 
-// ===== LIVE PRICE UPDATE =====
+sizeEl.addEventListener("change", updatePrice);
+rarityEl.addEventListener("change", updatePrice);
+
 function updatePrice() {
   const size = sizeEl.value;
   const rarity = rarityEl.value;
@@ -22,27 +22,15 @@ function updatePrice() {
     return;
   }
 
-  // PRICE
   priceEl.textContent = "€" + prices[size][rarity];
-
-  // LEGENDARY GIFTS
-  if (rarity === "legendary") {
-    giftsEl.textContent = "🎁 Includes 3 bonus gifts!";
-  } else {
-    giftsEl.textContent = "";
-  }
+  giftsEl.textContent =
+    rarity === "legendary" ? "🎁 Includes 3 bonus gifts!" : "";
 }
 
-// ===== EVENTS =====
-sizeEl.addEventListener("change", updatePrice);
-rarityEl.addEventListener("change", updatePrice);
-
-// ===== CONFIRM PACK =====
 function confirmPack() {
   const rarity = rarityEl.value;
   if (!rarity) return;
 
-  // SHAKE
   document.body.className = "";
   void document.body.offsetWidth;
 
@@ -50,7 +38,6 @@ function confirmPack() {
   if (rarity === "epic") document.body.classList.add("shake-medium");
   if (rarity === "legendary") document.body.classList.add("shake-big");
 
-  // BEADS (SIMPLE TEST)
   for (let i = 0; i < 20; i++) {
     const b = document.createElement("div");
     b.className = "bead";
@@ -58,10 +45,10 @@ function confirmPack() {
     b.style.top = "40vh";
     b.style.background =
       rarity === "legendary" ? "gold" :
-      rarity === "epic" ? "magenta" :
-      rarity === "rare" ? "cyan" : "#aaa";
+      rarity === "epic" ? "hotpink" :
+      rarity === "rare" ? "pink" : "#aaa";
 
     document.body.appendChild(b);
-    setTimeout(() => b.remove(), 1200);
+    setTimeout(() => b.remove(), 1300);
   }
 }
